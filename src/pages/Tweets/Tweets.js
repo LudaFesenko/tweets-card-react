@@ -12,12 +12,17 @@ import { CardContainer, CardWrap } from './Tweets.styled';
 import TweetCard from '../../components/TweetCard';
 import { BackLink } from '../../components/BackLink/BackLink';
 import ButtonLoad from '../../components/ButtonLoad';
+import { resetUsers } from 'redux/usersSlice';
+import SkeletonCard from 'components/ContentLoader';
 
 const Tweets = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    if (page === 1) {
+      dispatch(resetUsers());
+    }
     const abortController = new AbortController();
 
     dispatch(fetchUsers({ page, abortController }));
@@ -50,6 +55,7 @@ const Tweets = () => {
             <TweetCard user={user}>{user}</TweetCard>
           </li>
         ))}
+        {loading && <SkeletonCard />}
       </CardWrap>
       {showButton && <ButtonLoad onClick={loadMore} />}
     </CardContainer>
