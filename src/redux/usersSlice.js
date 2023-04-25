@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchUsers } from "./operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchUsers } from './operations';
 
-const handlePending = (state) => {
+const handlePending = state => {
   state.isLoading = true;
 };
 
@@ -18,10 +18,16 @@ const usersInitialState = {
 };
 
 const usersSlice = createSlice({
-  name: "users,",
+  name: 'users,',
   initialState: usersInitialState,
 
-  extraReducers: (builder) =>
+  reducers: {
+    resetUsers(state, action) {
+      return usersInitialState;
+    },
+  },
+
+  extraReducers: builder =>
     builder
       .addCase(fetchUsers.pending, handlePending)
       .addCase(fetchUsers.fulfilled, (state, { payload }) => {
@@ -34,3 +40,4 @@ const usersSlice = createSlice({
 });
 
 export const usersReducer = usersSlice.reducer;
+export const { resetUsers } = usersSlice.actions;
