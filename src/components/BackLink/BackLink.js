@@ -1,5 +1,6 @@
-import { IoArrowBackCircleSharp } from "react-icons/io5";
-import { StyledLink } from "./BackLink.styled";
+import { IoArrowBackCircleSharp } from 'react-icons/io5';
+import PropTypes from 'prop-types';
+import { StyledLink } from './BackLink.styled';
 
 export const BackLink = ({ to, children }) => {
   return (
@@ -9,4 +10,9 @@ export const BackLink = ({ to, children }) => {
       {children}
     </StyledLink>
   );
+};
+
+BackLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node,
 };

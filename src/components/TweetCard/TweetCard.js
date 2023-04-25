@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { selectUserFollow } from '../../redux/selectors';
 import { addFollowing, removeFollowing } from '../../redux/followingSlice';
 import FollowButton from '../FollowButton/FollowButton';
@@ -21,7 +22,7 @@ const TweetCard = ({ user }) => {
   const dispatch = useDispatch();
   const follow = useSelector(selectUserFollow);
 
-  const isFollowing = follow.find(id => id === user.id);
+  const isFollowing = Boolean(follow.find(id => id === user.id));
 
   function handleClick() {
     if (isFollowing) {
@@ -59,12 +60,21 @@ const TweetCard = ({ user }) => {
       <ContainerAvatar>
         <Circle>
           <AvatarPhoto>
-            <PersonPhoto src={user.avatar} alt={user.name} />
+            <PersonPhoto src={user.avatar} alt={user.user} />
           </AvatarPhoto>
         </Circle>
       </ContainerAvatar>
     </Card>
   );
+};
+TweetCard.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    followers: PropTypes.string.isRequired,
+    tweets: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default TweetCard;
