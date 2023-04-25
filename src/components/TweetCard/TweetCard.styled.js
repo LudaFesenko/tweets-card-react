@@ -98,7 +98,7 @@ export const Circle = styled.div`
   background-size: cover;
   background-image: url('assets/Ellipse.png');
 `;
-export const AvatarFoto = styled.div`
+export const AvatarPhoto = styled.div`
   display: flex;
   text-align: center;
   align-items: center;
