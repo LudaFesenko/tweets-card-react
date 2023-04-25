@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Wrapper } from './Home.styled';
+import { Wrapper, Tittle, Text, TextLink } from './Home.styled';
 
 const Home = () => {
   return (
     <Wrapper>
-      <p>Welcome to TWEETS</p>
-      <p>You can see person and see how is popular</p>
-      <p>If you want following just press Follow </p>
-      <Link to="/tweets">Lets START</Link>
+      <Tittle>Welcome to TWEETS</Tittle>
+      <Text>
+        You can find person and if you want following just press Follow{' '}
+      </Text>
+      <Link to="/tweets">
+        <TextLink>Lets START</TextLink>
+      </Link>
     </Wrapper>
   );
 };

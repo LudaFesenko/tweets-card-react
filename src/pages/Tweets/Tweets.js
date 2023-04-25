@@ -34,7 +34,6 @@ const Tweets = () => {
     setPage(prevState => {
       return prevState + 1;
     });
-    console.log(loadMore);
   };
 
   const location = useLocation();
